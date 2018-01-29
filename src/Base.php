@@ -5,7 +5,6 @@ class Base
 {
     protected function help(string $error = null)
     {
-        print $error;
         $o = (!is_null($error)) ? "\033[31m[ERROR] {$error}\033[0m" : '';
         $o .= "\033[33mCaesar Cipher - help page\n";
         $o .= "Author: github.com/rickdaalhuizen90\n";
