@@ -1,0 +1,44 @@
+#!/bin/bash
+
+dir="/usr/local/bin/${PWD##*/}"
+
+# colors
+yellow=$(tput setaf 3)
+red=$(tput setaf 1)
+normal=$(tput sgr0)
+
+create_alias () {
+
+  fish_rc=~/.config/fish/config.fish
+  zsh_rc=~/.zshrc
+  bash_rc=~/.bashrc
+  run="/usr/local/bin/caesar_cipher/bin/run"
+
+  if [ -f $bash_rc ]; then
+    printf "Added alias in -> $bash_rc\n"
+    echo "alias cipher=$run" >> $bash_rc
+  fi
+
+  if [ -f $zsh_rc ]; then
+    printf "Added alias in -> $zsh_rc\n"
+    echo "alias cipher=$run" >> $zsh_rc
+  fi
+
+  if [ -f $fish_rc ]; then
+    printf "Added alias in -> $fish_rc\n"
+    echo "alias cipher=$run" >> $fish_rc
+  fi
+}
+
+
+install_script () {
+  mkdir $dir
+  printf "${yellow}Move scripts...${normal}\n"
+  cp -vr ./* $dir && cd $dir
+  composer install
+  create_alias
+  printf "${yellow}Installation Completed!${normal}"
+  exit
+}
+
+[ ! -d "$dir" ] && install_script || printf "{$red}$dir allready exist!${normal}"

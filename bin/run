@@ -1,0 +1,11 @@
+#!/usr/bin/php
+<?php
+
+#TODO: temporary solution
+(file_exists('/usr/local/bin/caesar_cipher'))
+  ? require  '/usr/local/bin/caesar_cipher/vendor/autoload.php'
+  : require  './vendor/autoload.php';
+
+$cipher = new CaesarCipher($argv, $argc);
+$cipher->run();
+die;

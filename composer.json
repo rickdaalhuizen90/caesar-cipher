@@ -1,0 +1,20 @@
+{
+    "name": "rick/hash",
+    "description": "Hash a string directly from the terminal",
+    "type": "command line interface library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rick Daalhuizen",
+            "email": "rick.daalhuizen@protonmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "autoload": {
+        "psr-0": {"App\\": "src/"},
+        "files": [
+            "src/Base.php",
+            "src/CaesarCipher.php"
+        ]
+    }
+}

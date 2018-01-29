@@ -1,0 +1,21 @@
+#!/bin/bash
+
+dir="/usr/local/bin/${PWD##*/}"
+
+# colors
+yellow=$(tput setaf 3)
+red=$(tput setaf 1)
+normal=$(tput sgr0)
+
+remove_script () {
+  printf "${yellow}Remove $dir${normal}\n"
+  rm -rf $dir
+
+  printf "${yellow}Remove alias${normal}\n"
+  sed -ie 's/alias cipher=\/usr\/local\/bin\/caesar_cipher\/bin\/run//g' ~/.bashrc
+  sed -ie 's/alias cipher=\/usr\/local\/bin\/caesar_cipher\/bin\/run//g' ~/.zshrc
+  sed -ie 's/alias cipher=\/usr\/local\/bin\/caesar_cipher\/bin\/run//g' ~/.config/fish/config.fish
+  printf "${yellow}Successfully Uninstalled!${normal}\n"
+}
+
+remove_script
